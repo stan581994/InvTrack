@@ -1,0 +1,23 @@
+{
+  "name": "invtrack",
+  "version": "1.0.0",
+  "description": "This API server will track the inventory stock levels,track orders and suppliers, and store user credentials for order processing",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stan581994/InvTrack.git"
+  },
+  "author": "Steven Tan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stan581994/InvTrack/issues"
+  },
+  "homepage": "https://github.com/stan581994/InvTrack#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
