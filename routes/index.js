@@ -5,9 +5,9 @@ router.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
+router.use("/", require("./swagger"));
+
 router.use("/products", require("./products"));
-// router.use("/supplier ", require("./supplier"));
-// router.use("/order", require("./order"));
-// router.use("/user", require("./user"));
+router.use("/supplier", require("./supplier"));
 
 module.exports = router;
