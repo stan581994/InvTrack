@@ -3,15 +3,17 @@ const router = express.Router();
 
 const productController = require("../controllers/productController");
 const validator = require("../middleware/validators");
+const isAuthenticated = require("../middleware/authenticate");
 
-router.get("/", productController.getAllProducts);
-router.post("/", validator.validateProduct, productController.createProduct);
+router.get("/",isAuthenticated, productController.getAllProducts);
+router.post("/",isAuthenticated, validator.validateProduct, productController.createProduct);
 router.put(
   "/:productId",
+  isAuthenticated,
   validator.validateProduct,
   productController.updateProduct
 );
-router.get("/:productId", productController.getProductById);
-router.delete("/:productId", productController.deleteProduct);
+router.get("/:productId", isAuthenticated,productController.getProductById);
+router.delete("/:productId", isAuthenticated,productController.deleteProduct);
 
 module.exports = router;
