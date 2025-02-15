@@ -76,7 +76,7 @@ const getProductById = async (req, res) => {
 const deleteProduct = async (req, res) => {
   //#swagger.tags = ['Products']
   try {
-    const deletedProduct = await Product.findByIdAndDelete(req.params.orderId);
+    const deletedProduct = await Product.findByIdAndDelete(req.params.productId);
     if (!deletedProduct) {
       return res.status(404).json({ message: "Product not found" });
     }
