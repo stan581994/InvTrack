@@ -5,8 +5,8 @@ const doc = {
     title: "InvTrack API",
     description: "A simple Express inventory track Mgmt API",
   },
-  host: "localhost:3000",
-  schemes: ["http"],
+  host: "invtrack-z1o4.onrender.com",
+  schemes: ["https"],
   components: {
     schemas: {
       Product: {
