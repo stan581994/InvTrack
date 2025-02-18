@@ -3,7 +3,7 @@ const router = express.Router();
 
 const userController = require("../controllers/userController");
 const isAuthenticated = require("../middleware/authenticate");
-const validator = require("../middleware/validator");
+const validator = require("../middleware/validators");
 
 router.get("/", isAuthenticated, userController.getAllUsers);
 router.post(

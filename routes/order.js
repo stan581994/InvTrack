@@ -3,7 +3,7 @@ const router = express.Router();
 
 const orderController = require("../controllers/orderController");
 const isAuthenticated = require("../middleware/authenticate");
-const validator = require("../middleware/validator");
+const validator = require("../middleware/validators");
 
 router.get("/", isAuthenticated, orderController.getAllOrders);
 router.post(
