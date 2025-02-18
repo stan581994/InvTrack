@@ -1,4 +1,4 @@
-const Product = require("../models/product");
+const Product = require("../models/product.js");
 
 const getAllProducts = async (req, res) => {
   //#swagger.tags = ['Products']
