@@ -12,24 +12,43 @@ const getAllUsers = async (req, res) => {
   }
 };
 
-const createUser = async (req, res) => {
-  //#swagger.tags = ['Users']
-  try {
-    const newUser = new User({
-      userId: req.body.userId,
-      username: req.body.username,
-      email: req.body.email,
-      authProvider: req.body.authProvider,
-      authProviderId: req.body.authProviderId,
-      createdAt: req.body.createdAt,
+  const createUser = async (req, res) => {
+    //#swagger.tags = ['Users']
+
+    
+    try {
+      const newUser = new User({
+        userId: req.body.userId,
+        username: req.body.username,
+        email: req.body.email,
+        authProvider: req.body.authProvider,
+        authProviderId: req.body.authProviderId,
+        createdAt: req.body.createdAt,
+      });
+
+       // Check if the userId, email, or authProviderId already exists
+    const existingUser = await User.findOne({
+      $or: [
+        { userId: req.body.userId },
+        { email: req.body.email },
+        { authProviderId: req.body.authProviderId },
+      ],
     });
-    const savedUser = await newUser.save();
-    res.status(201).json(savedUser);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Server Error" });
-  }
-};
+
+    if (existingUser) {
+      return res.status(400).json({ message: "User already exists" });
+    }
+    
+      const savedUser = await newUser.save();
+      console.error("error",error);
+      res.status(201).json(savedUser);
+    } catch (error) {
+      console.error(error);
+      console.error("Error details:", error.stack);
+
+      res.status(500).json({ message: "Server Error" });
+    }
+  };
 
 const updateUser = async (req, res) => {
   //#swagger.tags = ['Users']
