@@ -40,12 +40,9 @@ const getAllUsers = async (req, res) => {
     }
     
       const savedUser = await newUser.save();
-      console.error("error",error);
       res.status(201).json(savedUser);
-    } catch (error) {
-      console.error(error);
-      console.error("Error details:", error.stack);
 
+    } catch (error) {
       res.status(500).json({ message: "Server Error" });
     }
   };
